@@ -1,0 +1,55 @@
+# Homework 1 Problem 1
+import numpy as np
+from numpy import object0
+from scipy.optimize import minimize
+
+def objective_func(x):
+  x1 = x[0]
+  x2 = x[1]
+  x3 = x[2]
+  x4 = x[3]
+  x5 = x[4]
+  return (x1 - x2)**2 + (x2 + x3 - 2)**2 + (x4**5 - 1)**2 + (x5 -1)**2
+
+def constraint1(x):
+  x1 = x[0]
+  x2 = x[1]
+  x3 = x[2]
+  x4 = x[3]
+  x5 = x[4]
+  return x1 + 3*x2
+
+def constraint2(x):
+  x1 = x[0]
+  x2 = x[1]
+  x3 = x[2]
+  x4 = x[3]
+  x5 = x[4]
+  return x3 + x4 - 2*x5
+
+def constraint3(x):
+  x1 = x[0]
+  x2 = x[1]
+  x3 = x[2]
+  x4 = x[3]
+  x5 = x[4]
+  return x2 - x5
+
+boundary = (-10, 10)
+bound = [boundary,boundary,boundary,boundary,boundary]
+
+const1 = {'type': 'eq', 'fun': constraint1}
+const2 = {'type': 'eq', 'fun': constraint2}
+const = [const1,const2]
+
+x0 = [0,0,0,0,0] #Original guess of initial conditions
+
+
+result = minimize(objective_func, x0, bounds=bound, constraints=const)
+
+print(result)
+
+x0_updated = [1,1,1,1,1] #Updated initial conditions to see if the results changed
+result_updated = minimize(objective_func, x0_updated, bounds=bound, constraints=const)
+
+print(result_updated)
