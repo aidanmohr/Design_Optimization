@@ -1,0 +1,29 @@
+# Homework 2
+## (https://drive.google.com/drive/search?q=owner:me%20(type:application/vnd.google.colaboratory%20||%20type:application/vnd.google.colab)) 
+
+
+## Problem 2
+import numpy as np
+from numpy import object0
+from scipy.optimize import minimize
+
+A = 1
+B = 2
+C = 3
+D = 1
+
+def plane(x):
+  x1 = x[0]
+  x2 = x[1]
+  x3 = x[2]
+  return x1 + 2*x2 + 3*x3 - 1
+
+def dist_to_plane(x):
+  x1 = x[0]
+  x2 = x[1]
+  x3 = x[2]
+  d = abs(A*(x1+1) + B*(x2-0) + C*(x3-1) + D)/(A**2 + B**2 + C**2)**1/2
+  return d
+
+x0 = [0,0,0]
+minimize(dist_to_plane,x0)
